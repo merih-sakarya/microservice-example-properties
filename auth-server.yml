@@ -1,0 +1,8 @@
+# Server configuration
+server:
+  port: ${AUTH_SERVER_PORT:5500}
+
+# Spring configuration
+spring:
+  profiles:
+    active: dev

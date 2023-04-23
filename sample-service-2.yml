@@ -1,0 +1,17 @@
+# Server configuration
+server:
+  port: ${SAMPLE_SERVICE_2_PORT:8091}
+
+# Spring configuration
+spring:
+  profiles:
+    active: dev
+  # Spring Security configuration
+  security:
+    oauth2:
+      resource-server:
+        jwt:
+          issuer-uri: ${JWT_ISSUER_URI:http://127.0.0.1:5500}
+          # Trusting a Single Asymmetric Key
+          # Location of the file containing the public key used to verify a JWT.
+          # public-key-location: classpath:{public-key-location}.pub

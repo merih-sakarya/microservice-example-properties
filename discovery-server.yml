@@ -1,0 +1,37 @@
+# Server configuration
+server:
+  port: ${EUREKA_PORT:8761}
+
+# Spring configuration
+spring:
+  profiles:
+    active: dev
+
+# Security configuration
+security:
+  basic:
+    path: /**
+  user:
+    name: ${EUREKA_USERNAME:admin}
+    password: ${EUREKA_PASSWORD:password}
+
+# Eureka configuration
+eureka:
+  # Eureka server configuration
+  server:
+    # Time to wait when syncing empty registry (0 means no wait)
+    waitTimeInMsWhenSyncEmpty: 0
+
+  # Eureka instance configuration
+  instance:
+    hostname: localhost
+
+  # Eureka client configuration
+  client:
+    # Whether to register this Eureka instance with itself (false because it's the discovery server)
+    registerWithEureka: false
+    # Whether to fetch the registry information from Eureka (false because it's the discovery server)
+    fetchRegistry: false
+    serviceUrl:
+      # Default zone URL for Eureka service
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
