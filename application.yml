@@ -1,3 +1,2 @@
-feign:
-  hystrix:
-    enabled: false
+
+
