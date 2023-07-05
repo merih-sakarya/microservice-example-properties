@@ -6,3 +6,23 @@ server:
 spring:
   profiles:
     active: dev
+
+# Logging configuration
+logging:
+  pattern:
+    # Take the span id and trace id from the Mapped Diagnostic Context (MDC) and put them into the log message.
+    level: '%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]'
+
+# Management configuration for tracing, metrics, and endpoint exposure
+management:
+  endpoints:
+    web:
+      exposure:
+        include: 'info, health, prometheus'
+  tracing:
+    sampling:
+      # Set trace sampling rate (1.0 = 100% of traces). Adjust based on traffic volume and system capacity.
+      probability: 1.0
+  metrics:
+    tags:
+      application: ${spring.application.name}
